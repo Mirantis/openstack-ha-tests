@@ -1,0 +1,36 @@
+{
+    "RabbitMQDisasterScenarios.power_off_one_controller": [
+        {
+            "runner": {
+                "type": "serial",
+                "times": 1
+            },
+            "context": {
+                "recover_cloud": {
+                    "checks": ["rabbitmq_cluster_status" ]
+                },
+                "cloud_nodes": {
+                    "controllers": [
+                        {
+                            "shaker_agent_id": "the-agent-1",
+                            "hardware_power_on_cmd": "echo hardware_power_on_cmd",
+                            "hardware_power_off_cmd": "echo hardware_power_off_cmd",
+                            "power_off_timeout": 20,
+                            "power_on_timeout": 30
+                        },
+                        {
+                            "shaker_agent_id": "the-agent-1",
+                            "hardware_power_on_cmd": "echo hardware_power_on_cmd",
+                            "hardware_power_off_cmd": "echo hardware_power_off_cmd",
+                            "power_off_timeout": 20,
+                            "power_on_timeout": 30
+                        }
+                    ],
+                    "power_control_node": {
+                        "shaker_agent_id": "the-agent-1"
+                    }
+                }
+            }
+        }
+    ]
+}
